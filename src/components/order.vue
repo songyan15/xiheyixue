@@ -139,11 +139,17 @@
                     key: '1',
                     value: '支付宝'
                 }],
-                payInfo:{}
+                payInfo:{},
+                payWay:1
             }
         },
         created() {
             this.getData();
+        },
+        watch:{
+            payWay(val){
+                this.payInfo.type=val;
+            }
         },
         methods: {
             getData() {
@@ -174,11 +180,11 @@
                 this.activeIndex = index;
                 this.realPrice = res.RealPrice;
                 this.payInfo = res;
-                this.payInfo.type = 1;
+                this.payInfo.type = this.payWay;
             },
             change(value, label){
                 console.log('change:', value, label)
-                this.payInfo.type = value;
+                this.payWay = value;
             },
             paySubmit(){
                 this.payInfo.userId = localStorage.getItem('Uid');

@@ -88,7 +88,8 @@
 
 <template>
     <div class="freeSubject">
-        <group v-if="this.$route.query.dataType==0">
+        <!--<group v-if="this.$route.query.dataType==0||this.$route.query.dataType==4||this.$route.query.dataType==16">-->
+        <group v-if="this.$route.query.flg==1">
             <cell :title="item.Name" is-link  
               :data-id="item.Id"
               v-for="(item,index) in subjects"

@@ -15,7 +15,7 @@
 	    	<x-button  :gradients="['#1D62F0', '#19D5FD']" @click.native="handleLogin">登录</x-button>
 	    	<!-- <x-button><img class="icon-wx" src="../assets/icon-wx.png" />微信登录</x-button> -->
 	    </box>
-	    <p><a class="to-regist" @click="toReg">还没有账号？快去注册</a></p>
+	    <p><a class="to-regist" @click="toReg">还没有账号？快去注册</a> <a href="http://www.gtaoeng.com/app/xiheyixue.html" target="_blank">《用户协议》</a></p>
 	</div>
 </template>
 

@@ -26,7 +26,7 @@ var browser = {
 }
 //支付
 export function mPay(obj){
-    debugger
+    //debugger
     //课程ID 或试题模块ID
     var dataID = obj.Id;//'c0dfcbcb-b9ba-4b7e-9b58-67181b5a20cb';
     //当为课程ID是为1，模块ID时为2
@@ -35,7 +35,7 @@ export function mPay(obj){
     var code = obj.Code;//'111';
     //用户ID
     var userID =obj.userId;//'07e93738-d8d3-4a8a-b2d7-0328e80484ff';
-    let price = 0.01;//obj.RealPrice;
+    let price = obj.RealPrice;//0.01;//
 
     if (browser.versions.android)
     {

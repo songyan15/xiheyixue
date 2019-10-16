@@ -131,7 +131,8 @@
                         path: '/freeSubject',
                         query: {
                             dataType: this.$store.state.subjectType.length > 0 ? this.$store.state.subjectType[0].Id : "",
-                            kind: 1
+                            kind: 1,
+                            flg:1 //1代表课程
                         }
                     })
                 }else{
