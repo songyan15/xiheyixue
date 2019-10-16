@@ -73,7 +73,7 @@
 
 <template>
 
-  <v-touch v-on:swipeleft="onSwipeLeft" v-on:swiperight="onSwipeRight" >
+  <v-touch v-on:swipeleft="onSwipeLeft" v-on:swiperight="onSwipeRight" :swipe-options="{direction: 'horizontal'}">
   <div class="chapter subject">
       <group v-if='subject.Title'>
       <group-title slot="title" style="text-align: center;">
