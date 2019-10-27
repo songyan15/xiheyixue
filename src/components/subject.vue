@@ -187,6 +187,7 @@
         userId: localStorage.getItem('Uid'),
         //nextStatus:this.$route.query.nextId,
         totalScore:0,
+          curScore:0,
         json:[],
         json2:[]
       }
@@ -245,7 +246,7 @@
       getNext(){
         let list = this.$store.state.subjectIndexList;
         let index = this.findIndex(list,this.$route.query.nextId);
-        //debugger;
+        debugger;
         console.log(list[index]);
         if(this.$route.query.nextId ){
           this.$router.push({
@@ -277,8 +278,11 @@
       },
       change(val) {
         //console.log('change', val)
+          //debugger
         if (val != this.subject.Opeationcorrect) {
-          this.subject.Scores = 0;
+            this.curScore = 0;
+        }else{
+            this.curScore = JSON.parse(JSON.stringify(this.subject.Scores))
         }
         //console.log(this.checklist);
       },
@@ -297,7 +301,9 @@
         this.activeIndex = index;
         this.checklist = item.key;
         //console.log(this.subject);
-        this.totalScore =  this.totalScore + this.subject.Scores;
+          this.curScore = 0;
+              this.curScore = JSON.parse(JSON.stringify(this.subject.Scores))
+        this.totalScore =  this.totalScore + this.curScore;
         //debugger
         if(this.$route.query.examId){
           let obj = {
@@ -309,7 +315,7 @@
             DataID: this.subject.Dataid
           }
           this.json2.push(obj);
-          console.log(JSON.stringify(this.json2));
+          //console.log(JSON.stringify(this.json2));
         }
       },
       submitAll(){
@@ -336,6 +342,18 @@
           this.showToast = true;
           return
         }
+          let list = this.$store.state.subjectIndexList;
+          let index = this.findIndex(list,this.$route.query.nextId);
+          console.log(list[index]);
+          debugger
+        if(this.curScore ==0){
+            this.$store.state.subjectIndexList[index-1].rightKey = false;
+            this.$emit("setSubjectIndexList",this.$store.state.subjectIndexList);
+        }else{
+            this.$store.state.subjectIndexList[index-1].rightKey = true;
+            this.$emit("setSubjectIndexList",this.$store.state.subjectIndexList);
+        }
+        console.log(this.$store.state.subjectIndexList);
         /* this.getData();
         this.subject.status = 1; */
         let json = {
@@ -343,7 +361,7 @@
           Code: this.$store.state.courseCode,
           SubjectID: this.subject.Id,
           OpeationCorrect: this.checklist,
-          Scores: this.subject.Scores,
+          Scores: this.curScore,
           DataID: this.subject.Dataid
         }
         json = JSON.stringify(json)

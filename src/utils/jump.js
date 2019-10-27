@@ -30,12 +30,12 @@ var browser = {
 export function gotoBrowserFun(url){
   console.log(url);
   //debugger
-    if (browser.versions.android)
+    /*if (browser.versions.android)
      {
           window.android.gotoBrowser(url); 
      }
      else 
      {
          gotoBrowser(url); 
-     }
+     }*/
  }

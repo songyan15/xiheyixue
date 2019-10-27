@@ -2,9 +2,9 @@
     <div style="height:100%;" class="indexPage">
         <swiper :list="demo01_list" v-model="demo01_index" dots-class="custom-bottom" dots-position="center"></swiper>
         <grid :show-lr-borders="false" :show-vertical-dividers="false" :cols="5">
-            <grid-item label="免费课程" @click.native="freeSubject($store.state.subjectType[0].Id)">
+            <!--<grid-item label="免费课程" @click.native="freeSubject($store.state.subjectType[0].Id)">
                 <img slot="icon" src="../assets/images/free.png">
-            </grid-item>
+            </grid-item>-->
             <grid-item label="章节练习" @click.native="exam">
                 <img slot="icon" src="../assets/images/lianxi2.png">
             </grid-item>
@@ -149,7 +149,7 @@
                     })
             },
             freeSubject(dataType) {
-                this.$router.push('/resource')
+                // this.$router.push('/resource')
             },
             exam() {
                 if (this.baseStatus) {

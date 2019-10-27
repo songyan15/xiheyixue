@@ -12,6 +12,7 @@
         @on-click-title="headerClick">
         <div class="mainTit">{{title}}</div>
         <x-icon type="ios-arrow-down" size="30" class="icon-down" v-if="!showBack"></x-icon>
+          <router-link class="rightBack" slot="right" to="/index/questions" v-if="subjectStatus">题库</router-link>
       </x-header>
       <view-box ref="viewBox" body-padding-top="46px" body-padding-bottom="55px">
         <!-- remember to import BusPlugin in main.js if you use components: x-img and sticky -->
@@ -52,11 +53,11 @@ export default {
         link:'/index/questions',
         className:'icon questions',
         label:'题库'
-      },{
+      },/*{
         link:'/index/shopping',
         className:'icon questions',
         label:'商城'
-      },{
+      },*/{
         link:'/index/personal',
         className:'icon personal',
         label:'个人中心'
@@ -64,7 +65,8 @@ export default {
       menus: {
         menu1: '更多科目'
       },
-      showMenus: false
+      showMenus: false,
+        subjectStatus:false
     }
   },
   computed:{
@@ -108,18 +110,14 @@ export default {
         return this.typeName;
       }
 
-      /* if (this.$route.path === '/chapter'){
-        this.showMenus = false;
-        return "章节练习";
-      }
-      if (this.$route.path === '/vediomenu'){
-        this.showMenus = false;
-        return '视频';
-      }
-      if (this.$route.path === '/vocationType'){
-        this.showMenus = false;
-        return '职业类别';
-      }  */
+        /* if (this.$route.path === '/vediomenu'){
+          this.showMenus = false;
+          return '视频';
+        }
+        if (this.$route.path === '/vocationType'){
+          this.showMenus = false;
+          return '职业类别';
+        }  */
       //return this.typeName;
       //return this.componentName ? `${this.componentName}` : ''
     },
@@ -127,6 +125,13 @@ export default {
       if (this.$route.path == '/index'||this.$route.path == '/index/course'
           ||this.$route.path == '/index/questions'||this.$route.path == '/index/personal'
           ||this.$route.path == '/index/shopping') return false
+
+        //debugger
+        if (this.$route.path === '/subject'){
+            this.subjectStatus = true;
+        }else{
+            this.subjectStatus = false;
+        }
       return true;
     },
     viewTransition () {
@@ -284,6 +289,10 @@ export default {
 body {
   //background-color: #fbf9fe;
   background-color: #eee;
+}
+.vux-header .vux-header-right .rightBack{
+    float: right;
+    color: #fff;
 }
 html, body {
   height: 100%;

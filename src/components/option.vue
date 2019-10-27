@@ -105,7 +105,8 @@
                 activeClass: -1,
                 list:[],
                 countdownNum:'',
-                maxtime:90*60
+                maxtime:90*60,
+                objStatus:""
             }
         },
         computed:{
@@ -114,7 +115,7 @@
             })
         },
         created() {
-            this.getData()
+            this.getData();
         },
         methods:{
             getData(){

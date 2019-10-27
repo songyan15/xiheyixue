@@ -56,9 +56,9 @@
       </cell>-->
     </group>
     <group>
-      <cell title="客服中心" :link="{path:'/'}">
+      <!--<cell title="客服中心" :link="{path:'/'}">
         <img slot="icon" width="20" style="display:block;margin-right:5px;" src="../assets/images/kefu.png">
-      </cell>
+      </cell>-->
       <cell title="清除缓存" is-link @click.native="clear">
         <img slot="icon" width="20" style="display:block;margin-right:5px;" src="../assets/images/qingchu.png">
       </cell>
