@@ -36,7 +36,7 @@ export function mPay(obj){
     //用户ID
     var userID =obj.userId;//'07e93738-d8d3-4a8a-b2d7-0328e80484ff';
     let price = obj.RealPrice;//0.01;//
-
+    //debugger
     if (browser.versions.android)
     {
         if(obj.type==0)
@@ -44,10 +44,13 @@ export function mPay(obj){
             //微信
             window.android.weichatPay(dataID,dataType,code,userID,price,"熙和教育","课程费");
         }
-        else
+        else if(obj.type==1)
         {
             //支付宝
             window.android.aliPay(dataID,dataType,code,userID,price,"熙和教育","课程费");
+        }else if(obj.type==2){
+            dataID = obj.ProductID;
+            window.android.applePay(dataID,dataType,code,userID,price,"熙和教育","课程费");
         }
     }
     else
@@ -57,10 +60,14 @@ export function mPay(obj){
             //微信
             weichatPay(dataID,dataType,code,userID,price,"熙和教育","课程费");
         }
-        else
+        else if(obj.type==1)
         {
             //支付宝
             aliPay(dataID,dataType,code,userID,price,"熙和教育","课程费");
+        }
+        else if(obj.type==2){
+            dataID = obj.ProductID;
+            applePay(dataID,dataType,code,userID,price,"熙和教育","课程费");
         }
     }
 }

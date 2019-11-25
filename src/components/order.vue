@@ -91,9 +91,12 @@
                     <x-button mini :type="activeIndex==n?'warn':'default'"  @click.native="dateSelect(rs,n)"  >{{rs.Name}}</x-button> <!--:class="'active':''"-->
                 </span>
                 <div class="payType">
-                    <group title="支付方式">
+                    <group title="支付方式" v-if="!isIphone">
                         <radio  :options="radio" value="1" @on-change="change"></radio>
                     </group>
+                    <!-- <group title="支付方式" v-if="isIphone">
+                        <radio  :options="radio2" value="2" @on-change="change"></radio>
+                    </group> -->
                 </div>
                 <div class="footer" style="padding: 20px">
                     <span class="oldPrice">原价¥{{price}}</span>
@@ -120,7 +123,9 @@
         components:{
             PopupHeader, Popup, TransferDom, Group, Radio
         },
-        data() {
+        data() {            
+            let ua = navigator.userAgent.toLowerCase();
+            let isiOS = !!ua.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); 
             return {
                 coursePrices:'',
                 modelPrices:'',
@@ -139,8 +144,14 @@
                     key: '1',
                     value: '支付宝'
                 }],
+                radio2:[{
+                    icon: require('../assets/images/applePay.jpg'),
+                    key: '2',
+                    value: '苹果支付'
+                }],
                 payInfo:{},
-                payWay:1
+                payWay:/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)?2:1,
+                isIphone:/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)?true:false
             }
         },
         created() {

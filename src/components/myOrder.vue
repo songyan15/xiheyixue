@@ -36,7 +36,9 @@
                     <p class="name">订单ID:{{item.TradeNo}}</p>
                     <p class="desc">商品种类：{{item.CommodityID}}</p>
                     <p class="desc">支付金额：{{item.Amount}}</p>
-                    <p class="desc">支付方式：{{item.PayType==0?'支付宝':'微信'}}</p>
+                    <p class="desc" v-if="item.PayType==0">支付方式：支付宝</p>
+                    <p class="desc" v-if="item.PayType==1">支付方式：微信</p>
+                    <p class="desc" v-if="item.PayType==2">支付方式：苹果支付</p>
                 </cell>
             </group>
         </div>
