@@ -10,7 +10,7 @@
                 @on-change="change">
             </x-input>
 	    </group>
-	    <!-- <p><span class="forget-pass">忘记密码?</span></p> -->
+	     <p><a class="forget-pass"  @click="toForgetPwd">忘记密码?</a></p>
 	    <box gap="10px 25px">
 	    	<x-button  :gradients="['#1D62F0', '#19D5FD']" @click.native="handleLogin">登录</x-button>
 	    	<!-- <x-button><img class="icon-wx" src="../assets/icon-wx.png" />微信登录</x-button> -->
@@ -78,6 +78,11 @@
                 this.$router.push({
 					path:'/register'
 				})
+            },
+            toForgetPwd(){
+                this.$router.push({
+					path:'/forgetPwd'
+				})
             }
 		}
 	}
@@ -92,7 +97,7 @@
 	.login{
         margin-top:10rem;
 		& p:first-of-type{
-			padding: 20px 15px 40px;
+			padding: 20px 15px 10px;
 			float: right;
 			color: @color666;
 			font-size:14px;
@@ -102,6 +107,7 @@
 			text-align: center;
 			color: @color393a31;
 			font-size:14px;
+            padding: 20px 15px 10px;
 			/* position: absolute;
 			bottom: 25px; */
 		}

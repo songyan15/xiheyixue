@@ -15,6 +15,23 @@ const router =  new Router({
       }
     },
     {
+      path: '/forgetPwd',
+      name: 'forgetPwd',
+      component: resolve => require(['@/components/forgetPwd'], resolve),
+      meta: {
+        title:"找回密码",
+        showMenus:false
+      }
+    },{
+      path: '/updatePwd',
+      name: 'updatePwd',
+      component: resolve => require(['@/components/updatePwd'], resolve),
+      meta: {
+        title:"修改密码",
+        showMenus:false
+      }
+    },
+    {
       path: '/register',
       name: 'register',
       component: resolve => require(['@/components/register'], resolve),
@@ -221,7 +238,7 @@ const router =  new Router({
 
 router.beforeEach((to, from, next) => {
   let Uid = localStorage.getItem('Uid')
-  if (to.path === '/login'||to.path === '/register') {
+  if (to.path === '/login'||to.path === '/register'||to.path === '/forgetPwd') {
     // 如果是访问登录界面，如果用户会话信息存在，代表已登录过，跳转到主页
       if(Uid) {
           next({ path: '/index' })
