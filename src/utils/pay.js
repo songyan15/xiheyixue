@@ -50,7 +50,11 @@ export function mPay(obj){
             window.android.aliPay(dataID,dataType,code,userID,price,"熙和教育","课程费");
         }else if(obj.type==2){
             dataID = obj.ProductID;
-            window.android.applePay(dataID,dataType,code,userID,price,"熙和教育","课程费");
+            if(dataID!=null){
+                window.android.applePay(dataID,dataType,code,userID,price,"熙和教育","课程费");
+            }else{
+                alert('ProductID不能为空！');
+            }
         }
     }
     else
@@ -67,7 +71,11 @@ export function mPay(obj){
         }
         else if(obj.type==2){
             dataID = obj.ProductID;
-            applePay(dataID,dataType,code,userID,price,"熙和教育","课程费");
+            if(dataID!=null) {
+                applePay(dataID, dataType, code, userID, price, "熙和教育", "课程费");
+            }else{
+                alert('ProductID不能为空！');
+            }
         }
     }
 }

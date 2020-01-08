@@ -1,13 +1,13 @@
 <template>
     <div>
             <group>
-                <x-input title="" name="email" placeholder="请输入原密码"
+                <x-input type="password" name="email" placeholder="请输入原密码"
                          v-model="oldPwd">
                 </x-input>
-                <x-input title="" name="email" placeholder="请输入新密码"
+                <x-input type="password" name="email" placeholder="请输入新密码"
                          v-model="newPwd">
                 </x-input>
-                <x-input title="" name="email" placeholder="请输入新密码"
+                <x-input type="password" name="email" placeholder="请输入新密码"
                                    v-model="agPwd">
                 </x-input>
             </group>
